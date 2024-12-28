@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 type NavLinks = {
 	name: string;
@@ -12,6 +13,17 @@ const links: NavLinks[] = [
 ];
 
 const Navbar = () => {
+	const [burgerMenuIsOpen, setBurgerMenuOpen] = useState(false);
+	const burgerLine = `bg-white w-5 h-[0.5px] my-0.5 rounded transition ease transform duration-300`;
+
+	const toggleBurgerMenu = () => {
+		setBurgerMenuOpen(!burgerMenuIsOpen);
+	};
+
+	useEffect(() => {
+		console.log("burgerState: ", burgerMenuIsOpen);
+	}, [burgerMenuIsOpen]);
+    
 	return (
 		<div className="sticky top-0 z-50">
 			<div className="flex flex-row justify-center items-center bg-[#151312] text-white gap-5 cursor-pointer h-16">
@@ -25,6 +37,24 @@ const Navbar = () => {
 						{link.name}
 					</Link>
 				))}
+                <button
+					className="group cursor-pointer ml-6"
+					onClick={() => toggleBurgerMenu()}
+				>
+					<div className="grid justify-items-center">
+						<div
+							className={`${burgerLine}
+							${burgerMenuIsOpen ? "rotate-45 translate-y-[4.2px]" : ""}`}
+						></div>
+						<div
+							className={`${burgerLine} ${burgerMenuIsOpen ? "opacity-0" : ""}`}
+						></div>
+						<div
+							className={`${burgerLine}
+							${burgerMenuIsOpen ? "-rotate-45 -translate-y-[4.2px]" : ""}`}
+						></div>
+					</div>
+				</button>
 			</div>
 		</div>
 	);
