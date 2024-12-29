@@ -4,10 +4,10 @@ import Footer from "./components/Footer/page";
 
 export default function Home() {
   return (
-    <div  className="bg-[#151312]">
+    <div  className="bg-stone-700">
       <Navbar />
       <div id='first-section' className="h-screen flex items-center justify-center gap-14">
-        <p>Wassup</p>
+        {/* <p>Wassup</p> */}
       </div>
       <Footer />
     </div>
