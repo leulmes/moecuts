@@ -6,7 +6,7 @@ interface MenuBurgerProps {
 }
 
 const MenuBurger = ({ open, toggleMenu }: MenuBurgerProps) => {
-	const burgerLine = `bg-white w-5 h-[0.5px] my-0.5 rounded transition ease transform duration-300`;
+	
 	return (
 		<button
 			className="flex flex-col justify-center items-center "

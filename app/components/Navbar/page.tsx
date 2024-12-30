@@ -2,15 +2,20 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import MenuBurger from "../MenuBurger";
+import { motion } from "motion/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { Phone } from "lucide-react";
+
 type NavLinks = {
 	name: string;
 	href: string;
 };
 
 const links: NavLinks[] = [
-    { name: "About", href: "" },
+	{ name: "About", href: "" },
 	{ name: "Services", href: "" },
-    { name: "Gallery", href: "" },
+	{ name: "Gallery", href: "" },
 	{
 		name: "Book Now",
 		href: "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3eZvcokw-Il3A-oGnXJxpfY82IG7ta-GC_uXID0Y9CNOBSHBUCRf9JyY2-ygr-mtzqmuiiJriA?gv=true",
@@ -19,7 +24,6 @@ const links: NavLinks[] = [
 
 const Navbar = () => {
 	const [open, setOpen] = useState(false);
-	const burgerLine = `bg-white w-5 h-[0.5px] my-0.5 rounded transition ease transform duration-300`;
 
 	const toggleMenu = () => {
 		setOpen((prevOpen) => !prevOpen);
@@ -31,20 +35,55 @@ const Navbar = () => {
 
 	return (
 		// Mobile nav
-		<header>
-			<div className="fixed left-0 top-0 w-full h-screen bg-[#151312] p-10">
-				<div className="flex h-full flex-col">
-					<div className="flex justify-between">
-						<h1 className="text-lg text-white">Moe Cuts</h1>
-						<MenuBurger open={open} toggleMenu={toggleMenu} />
-					</div>
-					<div className="flex flex-col h-full justify-center items-center bg-neutral-800">
+		<header className="px-14 py-6 border-b-2 border-solid bg-[#151312] ">
+			<div className="flex justify-between">
+				<h1>Moe Cuts</h1>
+				<MenuBurger open={open} toggleMenu={toggleMenu} />
+			</div>
+
+			{open && (
+				<motion.div
+					initial={{ scale: 0, opacity: 0, x: "-50%", y: "-50%" }}
+					animate={{ scale: 1, opacity: 1 }}
+					transition={{ duration: 0.5 }}
+					className="min-w-[70vw] flex flex-col justify-between z-30 items-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#3d3c3c]/90 rounded-lg backdrop-blur-md py-10"
+				>
+					<nav className="flex items-center flex-col justify-center gap-8">
 						{links.map((link, i) => (
 							<MobileNavLink key={i} name={link.name} href={link.href} />
 						))}
-					</div>
-				</div>
-			</div>
+					</nav>
+
+					<nav className="flex flex-col items-center justify-center flex-wrap my-5 gap-3">
+						{/* <div className="flex flex-row gap-2 items-center">
+							<Phone className="size-4" />
+							<p>+1 (444) 444-4444</p>
+						</div> */}
+						<div>
+							<p>Venmo: brosin</p>
+						</div>
+						<div className="flex gap-6">
+							<Link
+								href={"https://www.instagram.com/moeblessed_/"}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<FontAwesomeIcon icon={faInstagram} className="size-7" />
+							</Link>
+							<Link
+								href={"https://www.linkedin.com/in/mohsin-awan353/"}
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<FontAwesomeIcon
+									icon={faLinkedin}
+									className="size-7 cursor-pointer"
+								/>
+							</Link>
+						</div>
+					</nav>
+				</motion.div>
+			)}
 		</header>
 	);
 };
@@ -54,10 +93,7 @@ export default Navbar;
 const MobileNavLink = ({ name, href }: NavLinks) => {
 	return (
 		<div className="text-4xl uppercase text-white cursor-pointer">
-			<Link
-				href={href}
-				className="relative cursor-pointer transition-all ease-in-out before:transition-[width] before:ease-in-out before:duration-300 before:absolute before:bg-gray-400 before:origin-center before:h-[1px] before:w-0 hover:before:w-[50%] before:bottom-0 before:left-[50%] after:transition-[width] after:ease-in-out after:duration-300 after:absolute after:bg-gray-400 after:origin-center after:h-[1px] after:w-0 hover:after:w-[50%] after:bottom-0 after:right-[50%]"
-			>
+			<Link href={href} className="">
 				{name}
 			</Link>
 		</div>
