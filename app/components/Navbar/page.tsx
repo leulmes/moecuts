@@ -38,7 +38,7 @@ const Navbar = () => {
 						<h1 className="text-lg text-white">Moe Cuts</h1>
 						<MenuBurger open={open} toggleMenu={toggleMenu} />
 					</div>
-					<div className="flex flex-col h-full justify-center items-center">
+					<div className="flex flex-col h-full justify-center items-center bg-neutral-800">
 						{links.map((link, i) => (
 							<MobileNavLink key={i} name={link.name} href={link.href} />
 						))}
