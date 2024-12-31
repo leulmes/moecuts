@@ -10,7 +10,7 @@ const updateDate = (): number => {
 
 const Footer = () => {
 	return (
-		<div className="text-white bg-[#151312] flex flex-col items-center gap-2">
+		<div className="text-white bg-slate-600 flex flex-col items-center gap-2">
 			<div className="flex gap-4">
 				<Link
 					href={"https://www.instagram.com/moeblessed_/"}

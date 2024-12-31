@@ -13,9 +13,9 @@ type NavLinks = {
 };
 
 const links: NavLinks[] = [
-	{ name: "About", href: "" },
-	{ name: "Services", href: "" },
-	{ name: "Gallery", href: "" },
+	{ name: "About", href: "#first-section" },
+	{ name: "Services", href: "#second-section" },
+	{ name: "Gallery", href: "#third-section" },
 	{
 		name: "Book Now",
 		href: "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3eZvcokw-Il3A-oGnXJxpfY82IG7ta-GC_uXID0Y9CNOBSHBUCRf9JyY2-ygr-mtzqmuiiJriA?gv=true",
@@ -35,7 +35,7 @@ const Navbar = () => {
 
 	return (
 		// Mobile nav
-		<header className="px-14 py-6 border-b-2 border-solid bg-[#151312] ">
+		<header className="px-14 py-6 border-b-2 border-solid bg-slate-600 ">
 			<div className="flex justify-between">
 				<h1>Moe Cuts</h1>
 				<MenuBurger open={open} toggleMenu={toggleMenu} />
@@ -59,9 +59,7 @@ const Navbar = () => {
 							<Phone className="size-4" />
 							<p>+1 (444) 444-4444</p>
 						</div> */}
-						<div>
-							<p>Venmo: brosin</p>
-						</div>
+
 						<div className="flex gap-6">
 							<Link
 								href={"https://www.instagram.com/moeblessed_/"}
